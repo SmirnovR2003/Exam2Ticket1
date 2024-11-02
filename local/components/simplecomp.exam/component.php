@@ -62,7 +62,7 @@ if (
 			}
 		}
 
-		$productsIds =[];
+		$productsIds = [];
 		$rsElements = CIBlockElement::GetList(
 			[],
 			[
