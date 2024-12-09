@@ -9,6 +9,8 @@ if (!Loader::includeModule("iblock")) {
 	return;
 }
 
+$productsIds = [];
+
 if (
 	intval($arParams["PRODUCTS_IBLOCK_ID"]) > 0
 	&& intval($arParams["NEWS_IBLOCK_ID"]) > 0
@@ -97,6 +99,10 @@ if (
 
 
 		$this->includeComponentTemplate();
+	}
+	else
+	{
+		$this->AbortResultCache();
 	}
 }
 
