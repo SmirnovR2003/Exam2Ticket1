@@ -9,8 +9,6 @@ if (!Loader::includeModule("iblock")) {
 	return;
 }
 
-$productsIds = [];
-
 if (
 	intval($arParams["PRODUCTS_IBLOCK_ID"]) > 0
 	&& intval($arParams["NEWS_IBLOCK_ID"]) > 0
@@ -97,14 +95,12 @@ if (
 
 		}
 
+		$arResult["PRODUCTS_COUNT"] = count($productsIds);
 
+		$this->SetResultCacheKeys(["PRODUCTS_COUNT"]);
 		$this->includeComponentTemplate();
-	}
-	else
-	{
-		$this->AbortResultCache();
 	}
 }
 
 
-$APPLICATION->SetTitle(GetMessage("SIMPLECOMP_EXAM2_PRODUCTS_COUNT",["#COUNT#" => count($productsIds)]));
+$APPLICATION->SetTitle(GetMessage("SIMPLECOMP_EXAM2_PRODUCTS_COUNT",["#COUNT#" => $arResult["PRODUCTS_COUNT"]]));
